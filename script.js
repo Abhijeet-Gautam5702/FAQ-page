@@ -18,13 +18,13 @@ faqContainers.forEach(function (singleContainer) {
       }
     });
 
-    // btn.querySelector(".icon-img").src = "icons/circle-minus-solid.svg"
-    // btn.querySelector(".minus-icon").classList.toggle("show-icon")
-
-    // const minusIcon = btn.querySelector(".minus-icon");
-    // const plusIcon = btn.querySelector(".plus-icon");
-    // plusIcon.classList.toggle("hide-icon");
-    // minusIcon.classList.toggle("show-icon");
+    const minusIcon = btn.querySelector(".minus-icon");
+    console.log(minusIcon)
+    const plusIcon = btn.querySelector(".plus-icon");
+    console.log(plusIcon)
+    plusIcon.classList.remove("show-icon");
+    console.log(minusIcon.style.display)
+    minusIcon.classList.add("show-icon");
 
     faqAnswer.classList.toggle("show-text");
   });
