@@ -1,14 +1,38 @@
 const faqContainers = document.querySelectorAll(".faq-container");
+const downIcons = document.querySelectorAll(".down-icon");
 
-// const minusBtns = document.querySelectorAll(".minus-icon");
-// minusBtns.forEach(function (minusBtn) {
-//   minusBtn.style.display = "none";
-// });
+downIcons.forEach(function (currDownIcon) {
+  currDownIcon.src = "icons/angle-down-solid.svg";
+});
+
+//setting the icon for the opening/closing buttons
+let iconType = "down";
+const iconEl = document.querySelectorAll(".plus-icon");
+console.log(iconEl);
+iconEl.forEach(function (currIconEl) {
+  currIconEl.innerHTML = `
+    <img class="icon" src = "icons/angle-${iconType}-solid.svg">
+    `;
+});
+// console.log(iconEl[2].querySelector(".icon"))
 
 faqContainers.forEach(function (singleContainer) {
   const btn = singleContainer.querySelector(".icon-container");
 
+  // console.log(imgEl)
+
   btn.addEventListener("click", function () {
+    const imgEl = singleContainer.querySelector(".icon");
+    if (imgEl.src === "icons/angle-up-solid.svg") {
+      imgEl.src = "icons/angle-down-solid.svg";
+    } else {
+      imgEl.src = "icons/angle-up-solid.svg";
+    }
+    imgEl.forEach(function (currImgEl) {
+      if (currImgEl !== imgEl) {
+        currImgEl.src = "icons/angle-down-solid.svg";
+      }
+    });
     const faqAnswer = singleContainer.querySelector(".faq-ans");
 
     faqContainers.forEach(function (currContainer) {
@@ -17,14 +41,6 @@ faqContainers.forEach(function (singleContainer) {
         currFaqAnswer.classList.remove("show-text");
       }
     });
-
-    const minusIcon = btn.querySelector(".minus-icon");
-    console.log(minusIcon)
-    const plusIcon = btn.querySelector(".plus-icon");
-    console.log(plusIcon)
-    plusIcon.classList.remove("show-icon");
-    console.log(minusIcon.style.display)
-    minusIcon.classList.add("show-icon");
 
     faqAnswer.classList.toggle("show-text");
   });
